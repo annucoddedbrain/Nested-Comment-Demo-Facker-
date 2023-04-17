@@ -17,7 +17,10 @@ class TagFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'name'=> $this->faker->word(),
+            'description' => $this->faker->paragraph($nbSentences = 40 , $variableNbSentences = true),
+            'image' => 'php.png',
+            'css_class' => 'bg-gray-800 text-gray-100'
         ];
     }
 }
