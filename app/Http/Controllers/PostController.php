@@ -17,6 +17,7 @@ class PostController extends Controller
     public function show($slug){
         $post = Post::
         with(['user', 
+        'tags',
         'comments.replies.user',
         'likes.user',
         'comments.user',
