@@ -15,7 +15,10 @@ class PostController extends Controller
     }
 
     public function show($slug){
-        $post = Post::whereSlug($slug)->first();
+        $post = Post::
+        with(['user', 'comments.replies.user'])
+        ->first();
+        dd($post->toArray());
 
         return view('post.view', compact('posts'));
     }
