@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('likes', function (Blueprint $table) {
             $table->id();
+            $table->integer('user_id')->unsigned();
+            $table->integer('likeable_id')->unsigned();
+            $table->string('likeable_type');
+            $table->tinyInteger('liked')->default(0);
             $table->timestamps();
         });
     }

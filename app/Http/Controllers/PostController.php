@@ -16,8 +16,14 @@ class PostController extends Controller
 
     public function show($slug){
         $post = Post::
-        with(['user', 'comments.replies.user'])
-        ->first();
+        with(['user', 
+        'comments.replies.user',
+        'likes.user',
+        'comments.user',
+        'comments.likes',
+        'comments.likes.user',])
+        ->withCount('likes')
+        ->find(5);
         dd($post->toArray());
 
         return view('post.view', compact('posts'));

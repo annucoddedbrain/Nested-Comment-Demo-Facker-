@@ -20,4 +20,10 @@ class Comment extends Model
     public function replies(){
         return $this->hasMany(Comment::class , 'parent_id');
     }
+
+    public function likes()
+    {
+         return $this->morphMany(Like::class, 'likeable')->where('liked','1');
+    }    
+
 }
